@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación: Cumple de Hamlet Victorio — Palmar de Ocoa</title>
+  <meta name="description" content="Cumpleaños de Hamlet Victorio en El Palmar de Ocoa: playa, JetSki y mucho flow dominicano. 28 de septiembre. ¡Confirma tu asistencia!" />
+  <meta property="og:title" content="Cumple de Hamlet Victorio — Playa + JetSki" />
+  <meta property="og:description" content="El 28 de septiembre en El Palmar de Ocoa. Confirma tu asistencia." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="img/hamlet.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1220;          /* Azul noche */
+      --fg:#ffffff;          /* Blanco */
+      --muted:rgba(255,255,255,.75);
+      --card:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.12);
+      --accent1:#22d3ee;     /* Cyan */
+      --accent2:#f472b6;     /* Fucsia */
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:1.25rem;
+      --hero-bg:url('img/jet1.jpg'); /* valor por defecto; JS lo actualiza */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--fg);
+      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+      line-height:1.5; overflow-x:hidden;
+    }
+    .container{max-width:1140px;margin:0 auto;padding:0 24px}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.2rem;border-radius:calc(var(--radius) - .25rem);font-weight:600;text-decoration:none;transition:.2s;border:1px solid transparent}
+    .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#0b0b0b;box-shadow:var(--shadow)}
+    .btn-primary:hover{filter:brightness(1.08)}
+    .btn-ghost{background:rgba(255,255,255,.08);border-color:var(--border);color:var(--fg);backdrop-filter:blur(6px)}
+    .btn-ghost:hover{background:rgba(255,255,255,.12)}
+    .chip{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .6rem;border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.1);border:1px solid var(--border);backdrop-filter:blur(6px)}
+
+    /* HERO */
+    .hero{position:relative;min-height:92vh;display:grid;place-items:end;}
+    .hero::before{content:"";position:absolute;inset:0;background-image:var(--hero-bg);background-size:cover;background-position:center;filter:brightness(.92)}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.45) 35%,var(--bg) 85%)}
+    .hero-inner{position:relative;z-index:2;padding:8rem 0 4rem}
+    h1.title{font-family:"Bebas Neue",system-ui,sans-serif;font-size:clamp(2.5rem,7vw,4.5rem);margin:.5rem 0 0;line-height:1.05;letter-spacing:.5px;text-shadow:0 6px 18px rgba(0,0,0,.35)}
+    .subtitle{font-size:clamp(1rem,2.2vw,1.25rem);max-width:46ch;color:var(--muted)}
+
+    /* Tarjeta de Hamlet al inicio */
+    .hamlet-card{margin-top:1rem;display:flex;align-items:center;gap:1rem;padding:.75rem;border-radius:calc(var(--radius) + .25rem);background:rgba(255,255,255,.08);border:1px solid var(--border);backdrop-filter:blur(8px);box-shadow:var(--shadow);max-width:560px}
+    .hamlet-card img{width:96px;height:96px;object-fit:cover;border-radius:20px;border:2px solid rgba(255,255,255,.25)}
+    .hamlet-card .txt{display:flex;flex-direction:column}
+    .hamlet-card .txt .name{font-weight:700;font-size:1.05rem}
+    .hamlet-card .txt .note{color:var(--muted);font-size:.9rem}
+
+    .waves{position:absolute;left:0;right:0;bottom:-1px}
+
+    /* COUNTDOWN */
+    .countdown{margin-top:1.25rem;display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;max-width:640px}
+    .stat{display:flex;flex-direction:column;align-items:center;padding:1rem;border-radius:var(--radius);background:rgba(255,255,255,.08);border:1px solid var(--border);box-shadow:var(--shadow)}
+    .stat .num{font-family:"Bebas Neue";font-size:clamp(2rem,6vw,3rem);letter-spacing:.5px}
+    .stat .lbl{text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;color:var(--muted)}
+
+    /* SECTION */
+    section{position:relative}
+    .section{padding:4rem 0}
+    .tagline{display:flex;align-items:center;gap:.5rem;justify-content:center;color:#a7f3d0;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase}
+    .section h2{font-family:"Bebas Neue";font-size:clamp(1.8rem,5vw,2.6rem);text-align:center;margin:.5rem 0 1rem}
+    .section p.lead{text-align:center;color:var(--muted);max-width:60ch;margin:0 auto 2rem}
+
+    .grid-3{display:grid;grid-template-columns:repeat(1,1fr);gap:1rem}
+    @media (min-width:768px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+    .card{padding:1.25rem;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);backdrop-filter:blur(8px)}
+    .card h3{margin:.15rem 0 .35rem;font-size:1.05rem}
+    .muted{color:var(--muted)}
+
+    /* GALERÍA */
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}
+    @media (min-width:768px){.gallery{grid-template-columns:repeat(3,1fr)}}
+    .gallery img{width:100%;height:14rem;object-fit:cover;border-radius:calc(var(--radius) - .25rem);border:1px solid var(--border);box-shadow:var(--shadow)}
+
+    /* MAPA */
+    .mapwrap{overflow:hidden;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow)}
+    .mapwrap iframe{width:100%;height:380px}
+
+    /* FOOTER */
+    footer{padding:2.2rem 0;border-top:1px solid var(--border);text-align:center;color:var(--muted)}
+
+    /* Deco gradients */
+    .grad-top{position:absolute;inset:0;background:radial-gradient(80% 60% at 50% 0%, rgba(34,211,238,.14), transparent 60%);pointer-events:none}
+    .grad-mid{position:absolute;inset:0;background:radial-gradient(60% 55% at 50% 100%, rgba(244,114,182,.1), transparent 62%);pointer-events:none}
+      /* --- CTA súper visible para confirmar asistencia --- */
+    .btn-cta{position:relative;isolation:isolate;animation:pop 1.6s ease-in-out infinite}
+    .btn-cta::after{content:"";position:absolute;inset:-6px;border-radius:inherit;border:2px solid rgba(244,114,182,.6);opacity:.7;animation:ring 1.8s infinite;pointer-events:none}
+    @keyframes ring{0%{transform:scale(.95);opacity:.7}70%{transform:scale(1.15);opacity:0}100%{transform:scale(1.15);opacity:0}}
+    @keyframes pop{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+    .cta-callout{margin-top:.75rem;padding:.7rem 1rem;border-radius:var(--radius);background:linear-gradient(90deg,rgba(34,211,238,.12),rgba(244,114,182,.12));border:1px solid var(--border);color:var(--fg)}
+      /* --- CTA súper visible para confirmar asistencia --- */
+    .btn-cta{position:relative;isolation:isolate;animation:pop 1.6s ease-in-out infinite}
+    .btn-cta::after{content:"";position:absolute;inset:-6px;border-radius:inherit;border:2px solid rgba(244,114,182,.6);opacity:.7;animation:ring 1.8s infinite;pointer-events:none}
+    @keyframes ring{0%{transform:scale(.95);opacity:.7}70%{transform:scale(1.15);opacity:0}100%{transform:scale(1.15);opacity:0}}
+    @keyframes pop{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+    .cta-callout{margin-top:.75rem;padding:.7rem 1rem;border-radius:var(--radius);background:linear-gradient(90deg,rgba(34,211,238,.12),rgba(244,114,182,.12));border:1px solid var(--border);color:var(--fg)}
+
+    /* --- Sticky CTA móvil --- */
+    .mobile-cta{position:fixed;left:0;right:0;bottom:0;bottom:calc(env(safe-area-inset-bottom,0));padding:.6rem 1rem calc(.6rem + env(safe-area-inset-bottom,0));background:rgba(11,18,32,.88);backdrop-filter:blur(8px);border-top:1px solid var(--border);display:none;z-index:50}
+    .mobile-cta .btn{width:100%;justify-content:center;font-size:1rem;padding:1rem}
+
+    /* --- Responsivo --- */
+    @media (max-width: 900px){
+      .hero{min-height:88vh}
+    }
+    @media (max-width: 768px){
+      body{padding-bottom:96px} /* espacio para barra fija */
+      .mobile-cta{display:block}
+      .hero{min-height:86vh}
+      .hero-inner{padding:6rem 0 4rem}
+      .countdown{grid-template-columns:repeat(2,1fr)}
+      .hamlet-card{max-width:100%}
+    }
+    @media (max-width: 480px){
+      .gallery img{height:11rem}
+      .hamlet-card{gap:.75rem}
+      .hamlet-card img{width:72px;height:72px;border-radius:16px}
+      h1.title{font-size:clamp(2.2rem,9vw,3rem)}
+    }
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner container">
+      <div class="chip">🏝️ Playa • 🛥️ JetSki • 🎶 Vacilón</div>
+
+      <!-- Foto del cumpleañero al inicio (hamlet) -->
+      <div class="hamlet-card">
+        <img id="hamlet-photo" src="img/hamlet.jpg" alt="Foto del cumpleañero Hamlet" />
+        <div class="txt">
+          <div class="name">Hamlet Victorio</div>
+          <div class="note">¡Se viene un cumpleaños con mucho flow dominicano!</div>
+        </div>
+      </div>
+
+      <h1 class="title">¡Cumple en la Playa de <span id="cumpleanero">Hamlet Victorio</span>!</h1>
+      <p class="subtitle">El <strong>28 de septiembre</strong> nos juntamos en <strong>El Palmar de Ocoa</strong> para romper con un día de sol, arena y <em>JetSki</em> a to' lo que da. Ven a vacilar con la familia y los pana': música, brisa salada y mucha vibra caribeña. ¡Tamo' ready!</p>
+
+      <div style="margin-top:1rem">
+        <a id="rsvp-btn" class="btn btn-primary btn-cta" target="_blank" rel="noreferrer noopener" aria-label="Importante: confirma tu asistencia aquí para registrar tu participación">🎉 ¡CONFIRMA TU ASISTENCIA AQUÍ! 👉</a>
+        <a id="ics-btn" class="btn btn-ghost" download>🗓️ Agregar al calendario</a>
+        <a href="#mapa" class="btn btn-ghost">📍 Ver ubicación</a>
+        <button id="share-btn" class="btn btn-ghost" type="button">🔗 Compartir</button>
+        <div class="cta-callout" role="note" aria-live="polite">🔔 <strong>Importante:</strong> Para asegurar tu cupo, dale clic a <em>“¡CONFIRMA TU ASISTENCIA AQUÍ!”</em>.</div>
+      </div>
+
+      <div class="countdown" aria-label="Cuenta regresiva al cumpleaños">
+        <div class="stat"><div class="num" id="d">00</div><div class="lbl">días</div></div>
+        <div class="stat"><div class="num" id="h">00</div><div class="lbl">horas</div></div>
+        <div class="stat"><div class="num" id="m">00</div><div class="lbl">minutos</div></div>
+        <div class="stat"><div class="num" id="s">00</div><div class="lbl">segundos</div></div>
+      </div>
+    </div>
+
+    <!-- Olas decorativas -->
+    <svg class="waves" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden>
+      <path fill="rgba(34,211,238,0.22)" d="M0,32L60,37.3C120,43,240,53,360,64C480,75,600,85,720,85.3C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z" />
+    </svg>
+  </header>
+  <!-- Sticky CTA para móviles -->
+  <div class="mobile-cta" role="region" aria-label="Confirmar asistencia">
+    <a id="rsvp-btn-mobile" class="btn btn-primary btn-cta" target="_blank" rel="noreferrer noopener" aria-label="Confirma tu asistencia aquí">🎉 ¡CONFIRMA TU ASISTENCIA AQUÍ! 👉</a>
+  </div>
+
+  <main>
+    <!-- DETALLES -->
+    <section class="section">
+      <div class="grad-top"></div>
+      <div class="container">
+        <div class="tagline">Con mucho flow RD</div>
+        <h2>Detalles del Vacilón</h2>
+        <p class="lead">Trae tu mejor flow playero. Bloquea la fecha y cae con tu gente.</p>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="muted">📅 Fecha</div>
+            <h3>Domingo <strong>28 de septiembre, 2025</strong></h3>
+            <p class="muted">Desde las <strong>3:00 PM</strong> hasta el atardecer ☀️</p>
+          </div>
+          <div class="card">
+            <div class="muted">📍 Lugar</div>
+            <h3>El Palmar de Ocoa, República Dominicana</h3>
+            <p class="muted">Arena fina, agua azul y olas pa’ soltar todo.</p>
+          </div>
+          <div class="card">
+            <div class="muted">🌊 Plan</div>
+            <h3>JetSki, fotos durísimas, música y buena compañía</h3>
+            <p class="muted">Confirma con el botón y llega en flow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section class="section">
+      <div class="grad-mid"></div>
+      <div class="container">
+        <div class="tagline">Un adelanto del vibe</div>
+        <h2>Galería previa</h2>
+        <p class="lead">Así mismito nos vamos a ver 👇</p>
+        <div class="gallery" id="gallery"></div>
+      </div>
+    </section>
+
+    <!-- MAPA -->
+    <section id="mapa" class="section">
+      <div class="container">
+        <div class="tagline">¿Cómo llegar?</div>
+        <h2>Nos vemos en El Palmar de Ocoa</h2>
+        <p class="lead">Aquí el punto en el mapa:</p>
+        <div class="mapwrap">
+          <iframe title="Mapa Palmar de Ocoa" src="https://www.google.com/maps?q=Palmar%20de%20Ocoa%2C%20Rep%C3%BAblica%20Dominicana&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Invitación para el cumpleaños de <strong>Hamlet Victorio</strong>. Hecha con cariño y <em>mucho flow dominicano</em>.
+    </div>
+  </footer>
+
+  <script>
+    // ========= Ajustes Rápidos =========
+    const CUMPLEANERO = "Hamlet Victorio";
+    const RSVP_URL = "https://docs.google.com/forms/d/e/1FAIpQLScE5Qj2qxb1KEU5ENCbz5AGpIxu1dMpsVS6UzMA2Px1C_ishA/viewform?usp=dialog";
+    // Hora RD (UTC-04:00)
+    const EVENTO_INICIO_ISO = "2025-09-28T15:00:00-04:00"; // 3:00 PM
+    const EVENTO_FIN_ISO   = "2025-09-28T20:00:00-04:00"; // 8:00 PM
+
+    // ========= Rutas de imágenes locales =========
+    const IMG_DIR   = 'img/';
+    const JET_PREFIX= 'jet';
+    const JET_EXT   = '.jpg';   // cámbialo a '.png' si usas PNG
+    const JET_COUNT = 6;       // ⬅️ ajusta a la cantidad real de fotos
+
+    const HAMLET_EXT = '.jpg';  // cambia a '.png' si tu archivo es PNG
+    const HAMLET_IMG = IMG_DIR + 'hamlet' + HAMLET_EXT; // img/hamlet.jpg
+
+    // Fondo del hero con la primera foto de JetSki
+    const HERO_BG = IMG_DIR + JET_PREFIX + 1 + JET_EXT; // img/jet1.jpg
+
+    // ========= Inicialización =========
+    document.getElementById('cumpleanero').textContent = CUMPLEANERO;
+
+    // Botones
+    const rsvpBtn = document.getElementById('rsvp-btn');
+    rsvpBtn.href = RSVP_URL;
+    const rsvpBtnMobile = document.getElementById('rsvp-btn-mobile');
+    if (rsvpBtnMobile) rsvpBtnMobile.href = RSVP_URL;
+
+    // Hero: setear fondo via CSS var y foto de Hamlet
+    const hero = document.querySelector('.hero');
+    hero.style.setProperty('--hero-bg', `url('${HERO_BG}')`);
+    const hamletPhoto = document.getElementById('hamlet-photo');
+    hamletPhoto.src = HAMLET_IMG;
+    hamletPhoto.onerror = () => { hamletPhoto.style.display = 'none'; };
+
+    // ========= Galería con tus fotos locales =========
+    const gallery = document.getElementById('gallery');
+    const GALLERY_SRCS = Array.from({ length: JET_COUNT }, (_, i) => `${IMG_DIR}${JET_PREFIX}${i + 1}${JET_EXT}`);
+    GALLERY_SRCS.forEach(src=>{
+      const img = document.createElement('img');
+      img.alt = 'Playa y JetSki en RD';
+      img.loading = 'lazy';
+      img.src = src;
+      gallery.appendChild(img);
+    });
+
+    // ========= Cuenta regresiva =========
+    const d=document.getElementById('d'),h=document.getElementById('h'),m=document.getElementById('m'),s=document.getElementById('s');
+    const target = new Date(EVENTO_INICIO_ISO).getTime();
+    function pad(n){return String(n).padStart(2,'0')}
+    function tick(){
+      const now = Date.now();
+      const delta = Math.max(0, target - now);
+      const days = Math.floor(delta / (1000*60*60*24));
+      const hours = Math.floor((delta / (1000*60*60)) % 24);
+      const mins  = Math.floor((delta / (1000*60)) % 60);
+      const secs  = Math.floor((delta / 1000) % 60);
+      d.textContent = pad(days); h.textContent = pad(hours); m.textContent = pad(mins); s.textContent = pad(secs);
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    // ========= ICS (Agregar al calendario) =========
+    function toICSDate(iso){
+      return new Date(iso).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}Z$/, 'Z');
+    }
+    const icsBody = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//FlowRD//Birthday//ES',
+      'CALSCALE:GREGORIAN',
+      'BEGIN:VEVENT',
+      `UID:${Date.now()}@flowrd`,
+      `DTSTAMP:${toICSDate(EVENTO_INICIO_ISO)}`,
+      `DTSTART:${toICSDate(EVENTO_INICIO_ISO)}`,
+      `DTEND:${toICSDate(EVENTO_FIN_ISO)}`,
+      `SUMMARY:Cumpleaños de ${CUMPLEANERO} en Palmar de Ocoa`,
+      `DESCRIPTION:Playa, JetSki y mucho flow caribeño. — RSVP: ${RSVP_URL}`,
+      'LOCATION:El Palmar de Ocoa, República Dominicana',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\n');
+    const icsHref = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(icsBody);
+    const icsBtn = document.getElementById('ics-btn');
+    icsBtn.href = icsHref; icsBtn.download = `cumple-${CUMPLEANERO.toLowerCase().replace(/\s+/g,'-')}.ics`;
+
+    // ========= Compartir =========
+    const shareBtn = document.getElementById('share-btn');
+    shareBtn.addEventListener('click', async ()=>{
+      const text = `¡${CUMPLEANERO} está de cumple! Playa + JetSki en El Palmar de Ocoa — 28 de septiembre. ¿Te apuntas?`;
+      const url = location.href;
+      try{
+        if(navigator.share){
+          await navigator.share({title:`Cumple de ${CUMPLEANERO}`, text, url});
+        }else{
+          await navigator.clipboard.writeText(`${text} ${url}`);
+          alert('Enlace copiado para compartir ✨');
+        }
+      }catch(e){/* ignore */}
+    });
+  </script>
+</body>
+</html>
